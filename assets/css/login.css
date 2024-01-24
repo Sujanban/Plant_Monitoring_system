@@ -1,0 +1,128 @@
+body{
+    list-style: none;
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-top: 100px; 
+    
+}
+
+#container{
+    display: flex;
+    justify-content: center;
+    border: 0.0001px solid black;
+}
+
+/* Left side css-------------------------- */
+#container .left{
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color:rgb(35, 93, 95) ;
+    max-width: 300px;
+    padding: 40px;
+}
+#container .left .left-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#container .left img{
+    height: 200px;
+    border: 3px solid white;
+    border-radius: 50%;
+    background-color: rgb(82, 122, 124);
+}
+
+#container .left .text{
+    padding-top: 10px;
+    color: white;
+    text-align: center;
+}
+/* Right side css------------------------- */
+#container .right{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+#container .right .text h2{
+    color:rgb(35, 93, 95) ;
+}
+#container .right .input-field{
+    border-bottom: thin solid rgb(35, 93, 95) ;
+    width: 100%;
+}
+#container .right .input-field .bx{
+    font-size: 20px;
+    padding-top: 20px;
+    color: rgb(35, 93, 95);
+}
+#container .right .input-field input[type="email"],input[type="text"]{
+    border: none;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 7px 0px 7px 5px;
+    outline: none;
+    width: 85%;
+    background: transparent;
+}
+/* For password ------------------------- */
+#container .right .input-field input[type="password"]{
+    border: none;
+    margin-top: 20px;
+    font-size: 16px;
+    padding: 7px 0px 7px 5px;
+    outline: none;
+    width: 80%;
+    background: transparent;
+}
+#container .right .right-bottom {
+    margin-top: 20px;
+    text-align: right;
+}
+#container .right .right-bottom a{
+    display: inline-block;
+    font-size: 14px;
+    margin: 20px;
+    text-decoration: none;
+}
+
+#container .right .right-bottom button{
+    width: 100%;
+    border: none;
+    border-radius: 20px;
+    background-color: rgb(35, 93, 95);
+    padding: 10px 0;
+    color: white;
+    font-weight: 400;
+    font-size: 16px;
+    cursor: pointer;
+}
+#container .right .right-bottom button:hover{
+    background-color:rgb(82, 122, 124);
+}
+
+/* For Eye icon---------------- */
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.input-field {
+    position: relative;
+}
+
+.eye-icon.clicked .bx {
+    color: rgb(153, 153, 153) !important;
+}

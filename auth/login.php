@@ -31,79 +31,45 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Plant Monitoring System</title>
-    <!-- Box icons link -->
+    <link rel="stylesheet" href="../assets/css/login.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <!-- font awesome link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../assets/css/login_style.css">
+    <title>Login</title>
 </head>
 <body>
-<?php
-    if ($error) {
-        echo '<div id="userExits" 
-        style=" padding:5px;
-        text-align:center;
-        background: lightcoral;
-        font-size: large;">'.$error.'</div>';
-    }
-    if(isset($_SESSION['password_recoverd'])){
-        echo '<div id="userExits" 
-        style=" padding:5px;
-        text-align:center;
-        background: lightgreen;
-        font-size: large;">'.$_SESSION['password_recoverd'].'</div>';
-    }?>
-    <div class="login-container">
-        <h1 style="text-align: center;color: rgb(247, 247, 248)" >Login to your account</h1>
-        <p style="text-align: center;color: rgb(247, 247, 248);">Don't have an account? <a href="signup.php">Sign Up Here</a></p>
-        <form action="" method="post" onsubmit="return validateUserDetails()" name="frmUserDetails">
-            <div class="form-item">
-                <label class="form-label"  for="email">Email Address</label>
-                <input class="form-control" type="text" name="email" id="email" required>
-                <div class="error" id="email-error">You have entered an invalid email address. Please try again</div>
-            </div>
-
-            <div class="form-item">
-                <label for="password">Password</label>
-                <div class="password-input">
-                    <input class="form-control" type="password" name="password" id="password" required >
-                    <span class="eye-icon" onclick="return PasswordVisibility()"><i class="fa fa-eye"></i></span>
+     <div id="container">
+        <div class="left">
+            <div class="left-content">
+                <img src="../assets/images/plantAndHand.png" alt="logo">
+                <div class="text">
+                    <h3>Web App Name</h3>
+                    <p>our motto Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error voluptates itaque porro consequuntur nulla. Est asperiores voluptatibus qui facilis?</p>
                 </div>
-                <div class="error" id="password-error">Your password is invalid.</div>
             </div>
-
-            <div class="form-item" style="display: flex; justify-content: space-between; align-items: center;">
-
-                <p style="text-align:right;"><a href="forgetpassword.php" id="forgot-link">Forgot Password?</a></p>
-            </div>
-            
-            <div class="form-item">
-                <button class="login-btn" type="submit" id="btn" name="btn">Login</button>
-            </div>
-            <hr>
-            <div class="home-link">
-                <p style="text-align: center;color: rgb(247, 247, 248);">Go back to <a href="../index.php"><i class='bx bxs-home'></i></a></p>
+        </div>
+        <form action="" method="post">
+            <div class="right">
+                <div class="text">
+                    <h2>Login into your account</h2>
+                    <p>Welcome Back!</p>
+                </div>
+                <div class="input-field">
+                    <i class='bx bx-envelope'></i>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="input-field">
+                    <i class='bx bx-lock-alt'></i>
+                    <input type="password" name="password" id="password" placeholder="Password" required>
+                    <span class="eye-icon" onclick="return PasswordVisibility()"><i class='bx bxs-low-vision'></i></span>
+                </div>
+                <div class="right-bottom">
+                    <a href="#">Forget Password?</a><br>
+                    <button type="submit" name="submitBtn">Login</button>
+                    <p>Don't have an account?<a href="signup.php">Sign Up</a></p>
+                </div>
             </div>
         </form>
-    </div>
-
-
-    <script>
-        function validateUserDetails(e)
-        {
-            var ok=true;
-            //email validation
-            let email=document.frmUserDetails.email.value;
-            let emailpattern=/^[\w]+([.-\w]+)?@[\w.-]+\.[A-Za-z]{2,6}$/i;
-            if(!emailpattern.test(email))
-            {
-                ok=false;
-                document.getElementById('email-error').style='display:block';
-            }
-
-            return ok;
-        }
+     </div>
+     <script>
         function PasswordVisibility() {
             var passwordInput = document.getElementById("password");
             var eyeIcon = document.querySelector(".eye-icon");
@@ -119,6 +85,6 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 eyeIcon.classList.remove("clicked");
             }
         }
-    </script>
+     </script>
 </body>
 </html>
