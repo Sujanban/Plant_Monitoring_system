@@ -1,0 +1,105 @@
+/* body{
+    width: 100%;
+    background-image: url(../images/login_wallpaper.jpg);
+    background-position: center;
+    background-size: cover ;
+    filter: grayscale(20%) brightness(40%);
+} */
+
+body{
+    background-color: rgb(197, 203, 227);
+    margin: 0;
+    padding: 0;
+}
+.login-container{
+    color:black;
+    padding: 1em;
+    width:400px;
+    margin:2%  auto; 
+    background-color:rgb(60, 122, 169);
+    backdrop-filter: blur;
+    box-shadow:10px 10px 10px;
+    
+}
+.form-item{
+    margin-bottom: 1em;
+}
+.form-label{
+    margin-bottom:0.3em;
+    font-weight: bold;
+    color: rgb(247, 247, 248);
+}
+.form-control{
+    padding:6px;
+    font-size:18px;
+    width: 100%;   
+}
+.login-btn{
+    padding: 0.4em 2em 0.4em 2em;
+    font-weight: bold;
+    cursor:pointer;
+    color: black;
+    background-color:rgb(232, 221, 192);
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    font-size: medium;
+    padding: 10px;
+}
+.login-btn:hover{
+    color: white !important;
+    background-color: rgb(37, 49, 110);
+    border: thin solid rgb(37, 49, 110) ;
+}
+a{
+    text-decoration: none;
+    color: rgb(2, 10, 51);
+}
+input.form-control{
+    width:96%;
+}
+.form-label ,  .from-control {
+    display:block;
+}
+.form-item .error{
+    margin-top:0.2em;
+    color:rgba(250, 41, 41, 0.884);
+    font-size:14px;
+    display:none;
+    
+}
+/*For eye icon*/
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.eye-icon i {
+    color: #777;
+}
+
+.password-input {
+    position: relative;
+}
+
+.eye-icon.clicked i {
+    color: #333;
+}
+.social-icons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.home-link {
+    color: rgb(2, 10, 51);
+    text-decoration:none;
+  }
+
+hr{
+    border: none;
+    height: 1px;
+    background-color: white;
+}
