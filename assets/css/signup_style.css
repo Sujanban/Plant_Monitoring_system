@@ -85,3 +85,24 @@ hr{
     font-size: large;
     color: white;
 }
+
+/*For eye icon*/
+.eye-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.eye-icon i {
+    color: #777;
+}
+
+.password-input {
+    position: relative;
+}
+
+.eye-icon.clicked i {
+    color: #333;
+}

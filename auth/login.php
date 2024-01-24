@@ -1,23 +1,24 @@
 <?php
-session_start();
+
 date_default_timezone_set('Asia/Kathmandu');
 $login=false;
 $error=false;
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     include_once "../partials/_dbconnect.php";
     $email=htmlspecialchars(stripslashes(trim($_POST['email'])));
-    $password=md5(trim($_POST['password']));
+    $password=md5($_POST['password']);
+
     //sql command to select the particular username and password
     $sql = "SELECT id,`name`,email,`password`,`image` FROM users WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn,$sql);
+
+    //fetching data
     $row=mysqli_fetch_assoc($result);
     if($row){
-        $login=true;
         session_start();
         $_SESSION['loggedin'] = true;
-        $_SESSION['userData']=$row;
+        $_SESSION['userData'] = $row; //assgining the user data array in session
         header("Location: ../index.php");
-        exit;   
     }
     else{
         $error='Invalid Credentials';
@@ -30,7 +31,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobspark</title>
+    <title>Login - Plant Monitoring System</title>
     <!-- Box icons link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <!-- font awesome link -->
@@ -64,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             </div>
 
             <div class="form-item">
-                <label class="forc:\xampp\htdocs\JobsPark\assetsm-label" for="password">Password</label>
+                <label for="password">Password</label>
                 <div class="password-input">
                     <input class="form-control" type="password" name="password" id="password" required >
                     <span class="eye-icon" onclick="return PasswordVisibility()"><i class="fa fa-eye"></i></span>

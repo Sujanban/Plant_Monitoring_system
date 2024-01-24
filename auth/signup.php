@@ -6,6 +6,7 @@ if (isset($_POST['btn'])) {
     $name = htmlspecialchars(trim($_POST['name']));
     $email = htmlspecialchars(trim($_POST['email']));
     $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
     //connecting to database
     include_once "../partials/_dbconnect.php";
     $result = mysqli_query($conn, "SELECT * FROM users where email='$email'");
@@ -13,13 +14,18 @@ if (isset($_POST['btn'])) {
     if ($affectedRow > 0) {
         $error = "User already exists!!";
     } else {
-        //insert user info to database
-        $sql = "INSERT INTO users(`name`,email,`password`,`image`) VALUES ('$name','$email','$pass','$image')";
-        $insertUser = mysqli_query($conn,$sql);
-        if ($insertUser) {
-            $accountCreated="Account Created Sucessfully!! Check your Mail for login info.";
+        if($password == $cpassword){
+            //hashing password
+            $pass= md5($password);
+            $sql = "INSERT INTO users(`name`,email,`password`) VALUES ('$name','$email','$pass')";
+            $insertUser = mysqli_query($conn,$sql);
+            if ($insertUser) {
+                $accountCreated="Account Created Sucessfully!! ";
+            }
         }
-        
+        else{
+            $error= "Password Do not Match!";
+        }
     }
 }
 
@@ -30,7 +36,7 @@ if (isset($_POST['btn'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jobspark signup</title>
+    <title>Signup- Plant Monitoring System</title>
     <!-- Box icons link -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -64,13 +70,7 @@ if (isset($_POST['btn'])) {
                 <input class="form-control" type="text" name="name" id="name">
                 <div class="error" id="name-error">Name field is required and should have 3-20 character</div>
             </div>
-            <div class="form-item">
-                <label class="form-label" for="gender">Gender</label>
-                <div class="for-radio">
-                    <input class="radio-control" type="radio" name="gender" id="gender" value="Male" required> <span>Male</span>
-                    <input class="radio-control" type="radio" name="gender" id="gender" value="Female" required> <span>Female</span>
-                </div>
-            </div>
+            
             <div class="form-item">
                 <label class="form-label" for="email">Email Address</label>
                 <input class="form-control" type="text" name="email" id="email">
@@ -78,12 +78,21 @@ if (isset($_POST['btn'])) {
             </div>
 
             <div class="form-item">
-                <label class="form-label" for="typeOfUser">Role</label>
-                <div class="for-radio">
-                    <input class="radio-control" type="radio" name="typeOfUser" id="typeOfUser" value="seeker" checked> <span>Seeker</span>
-                    <input class="radio-control" type="radio" name="typeOfUser" id="typeOfUser" value="employer"> <span>Employer</span>
-                </div>
+                <label for="password">Password</label>
+                <div class="password-input">
+                <input class="form-control" type="password" name="password" id="password" required >
+                <span class="eye-icon" onclick="return PasswordVisibility()"><i class="fa fa-eye"></i></span>
             </div>
+            </div>
+            <div class="form-item">
+                <label for="cpassword">Confirm Password</label>
+                <div class="password-input">
+                <input class="form-control" type="password" name="cpassword" id="cpassword" required >
+                <span class="eye-icon" onclick="return PasswordVisibility()"><i class="fa fa-eye"></i></span>
+            </div>
+                <div class="error" id="cpassword-error">Your password do not match</div>
+            </div>
+            
             <div class="form-item">
                 <button class="signup-btn" type="submit" id="btn" name="btn">Sign Up</button>
             </div>
@@ -123,6 +132,7 @@ if (isset($_POST['btn'])) {
             }
 
             //confirm-password validation
+            let password = document.frmUserDetails.password.value;
             let cpassword = document.frmUserDetails.cpassword.value;
             if (password !== cpassword) {
                 ok = false;
@@ -130,23 +140,27 @@ if (isset($_POST['btn'])) {
             }
 
             return ok;
-        }
 
+        }
         function PasswordVisibility() {
             var passwordInput = document.getElementById("password");
-            var cpasswordInput = document.getElementById("cpassword");
+            var passwordInput2 = document.getElementById("cpassword");
             var eyeIcon = document.querySelector(".eye-icon");
-
-            if (passwordInput.type === "password") {
+  
+            if (passwordInput.type === "password" ) 
+            {
                 passwordInput.type = "text";
-                cpasswordInput.type = "text";
+                passwordInput2.type='text';
                 eyeIcon.classList.add("clicked");
-            } else {
+            }
+            else
+            {
                 passwordInput.type = "password";
-                cpasswordInput.type = "password";
+                passwordInput2.type='text';
                 eyeIcon.classList.remove("clicked");
             }
         }
+
     </script>
 </body>
 
