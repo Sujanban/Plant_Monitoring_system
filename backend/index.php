@@ -4,6 +4,8 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     header("Location: ../auth/login.php");
 } else {
     $user_id=$_SESSION['userData']['id'];
+    // print_r($_SESSION);
+
 }
 ?>
 <!DOCTYPE html>

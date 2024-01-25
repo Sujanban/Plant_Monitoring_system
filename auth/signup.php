@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $insertUser = mysqli_query($conn,$sql);
             if ($insertUser) {
                 $accountCreated="Account Created Sucessfully!! ";
+                
             }
         }
         else{
@@ -36,7 +37,10 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- Box icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Toast css -->
+    <link rel="stylesheet" href="../assets/css/toast.css">
     <title>Sign Up</title>
 </head>
 <body>
@@ -81,23 +85,34 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             </div>
         </form>
      </div>
+    <script src="../assets/js/toast.js"></script> 
      <script>
+        <?php if ($accountCreated) { ?>
+            showToast("<?php echo $accountCreated;?>","success",5000);
+        <?php } ?>
+        <?php if ($error) { ?>
+            showToast("<?php echo $error;?>","danger",5000);
+        <?php } ?>
         function PasswordVisibility() {
             var passwordInput = document.getElementById("password");
             var passwordInput2 = document.getElementById("cpassword");
-            var eyeIcon = document.querySelector('.eye-icon');
+            var eyeIcon = document.querySelectorAll('.eye-icon');
   
             if (passwordInput.type === "password" || passwordInput2.type === "password" ) 
             {
                 passwordInput.type = "text";
                 passwordInput2.type = "text";
-                eyeIcon.classList.add("clicked");
+                eyeIcon.forEach((eye)=>{
+                    eye.classList.add("clicked");
+                })
             }
             else
             {
                 passwordInput.type = "password";
                 passwordInput2.type = "password";
-                eyeIcon.classList.remove("clicked");
+                eyeIcon.forEach((eye)=>{
+                    eye.classList.remove("clicked");
+                })
             }
         }
      </script>

@@ -9,7 +9,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $password=md5($_POST['password']);
 
     //sql command to select the particular username and password
-    $sql = "SELECT id,`name`,email,`password`,`image` FROM users WHERE email='$email' AND password='$password'";
+    $sql = "SELECT id,`name`,email FROM users WHERE email='$email' AND password='$password'";
     $result = mysqli_query($conn,$sql);
 
     //fetching data
@@ -32,10 +32,14 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/login.css">
+    <!-- Box Icons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Toast css -->
+    <link rel="stylesheet" href="../assets/css/toast.css">
     <title>Login</title>
 </head>
 <body>
+    
      <div id="container">
         <div class="left">
             <div class="left-content">
@@ -70,7 +74,12 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             </div>
         </form>
      </div>
+    <script src="../assets/js/toast.js"></script> 
      <script>
+        <?php if ($error) { ?>
+            showToast("<?php echo $error;?>","danger",5000);
+        <?php } ?>
+
         function PasswordVisibility() {
             var passwordInput = document.getElementById("password");
             var eyeIcon = document.querySelector(".eye-icon");

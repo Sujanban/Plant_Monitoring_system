@@ -126,3 +126,10 @@ body{
 .eye-icon.clicked .bx {
     color: rgb(153, 153, 153) !important;
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .left {
+        display: none;
+    }
+}
