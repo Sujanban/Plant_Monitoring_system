@@ -18,7 +18,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         session_start();
         $_SESSION['loggedin'] = true;
         $_SESSION['userData'] = $row; //assgining the user data array in session
-        header("Location: ../index.php");
+        header("Location: ../backend");
     }
     else{
         $error='Invalid Credentials';
@@ -41,7 +41,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <div class="left-content">
                 <img src="../assets/images/plantAndHand.png" alt="logo">
                 <div class="text">
-                    <h3>Web App Name</h3>
+                    <h3>HarvestStone</h3>
                     <p>our motto Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error voluptates itaque porro consequuntur nulla. Est asperiores voluptatibus qui facilis?</p>
                 </div>
             </div>
@@ -66,6 +66,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                     <button type="submit" name="submitBtn">Login</button>
                     <p>Don't have an account?<a href="signup.php">Sign Up</a></p>
                 </div>
+                <p>Back to Home: <a href='../index.php'><i class='bx bxs-home' style="color:rgb(35, 93, 95);font-size:16px;"></i></a></p>
             </div>
         </form>
      </div>

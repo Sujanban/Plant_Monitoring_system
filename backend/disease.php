@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
+    header("Location: ../auth/login.php");
+} else {
+    $user_id=$_SESSION['userData']['id'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,36 +21,36 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <title>AdminHub</title>
+    <title>Admin Dashboard</title>
   </head>
   <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-      <a href="index.html" class="font-bold uppercase brand ring p-4">
+      <a href="index.html" class="font-bold uppercase brand p-4">
         <img src="assets/images/logo.png" class="w-[5vh]" alt="">
         <span class="text-stone-900 text-lg">HarvestGrove</span>
       </a>
       <ul class="side-menu top">
-        <li class="active">
-          <a href="index.html">
+        <li>
+          <a href="index.php">
             <i class="bx bxs-dashboard"></i>
             <span class="text">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="weather.html">
+          <a href="weather.php">
             <i class='bx bx-cloud-snow'></i>
             <span class="text">Weather Forecast</span>
           </a>
         </li>
-        <li>
-          <a href="disease.html">
+        <li class="active">
+          <a href="disease.php">
             <i class='bx bxs-virus'></i>
             <span class="text">Disease Detection</span>
           </a>
         </li>
         <li>
-          <a href="message.html">
+          <a href="message.php">
             <i class="bx bxs-message-dots"></i>
             <span class="text">Message</span>
           </a>
@@ -56,13 +64,13 @@
       </ul>
       <ul class="side-menu">
         <li>
-          <a href="setting.html">
+          <a href="setting.php">
             <i class="bx bxs-cog"></i>
             <span class="text">Settings</span>
           </a>
         </li>
         <li>
-          <a href="#" class="logout">
+          <a href="../auth/logout.php" class="logout">
             <i class="bx bxs-log-out-circle"></i>
             <span class="text">Logout</span>
           </a>
@@ -87,11 +95,11 @@
         </form>
         <input type="checkbox" id="switch-mode" hidden />
         <label for="switch-mode" class="switch-mode"></label>
-        <a href="message.html" class="notification">
+        <a href="message.php" class="notification">
           <i class="bx bxs-bell"></i>
           <span class="num">8</span>
         </a>
-        <a href="setting.html" class="profile">
+        <a href="setting.php" class="profile">
           <img src="assets/images/profile.png" />
         </a>
       </nav>
