@@ -44,9 +44,9 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
           </a>
         </li>
         <li>
-          <a href="disease.php">
-            <i class='bx bxs-virus'></i>
-            <span class="text">Disease Detection</span>
+          <a href="bot.php">
+          <i class='bx bx-bot'></i>
+            <span class="text">Farm Bot</span>
           </a>
         </li>
         <li class="active">
