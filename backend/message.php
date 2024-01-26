@@ -26,7 +26,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
   <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-      <a href="index.html" class="font-bold uppercase brand  p-4">
+      <a href="index.php" class="font-bold uppercase brand  p-4">
         <img src="assets/images/logo.png" class="w-[5vh]" alt="">
         <span class="text-stone-900 text-lg">HarvestGrove</span>
       </a>

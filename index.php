@@ -27,14 +27,14 @@
                     <ul
                         class="bg-white h-[90vh] navlink grid sm:flex absolute z-[99] sm:static top-[11vh] sm:top-auto sm:left-auto w-full left-0  items-center gap-4">
                         <li class="flex">
-                            <a class="mx-auto rounded-md" href="">
+                            <a class="mx-auto rounded-md" href="#explore">
                                 Explore</a>
                         </li>
                         <li class="flex">
-                            <a class="mx-auto rounded-md" href="">Service</a>
+                            <a class="mx-auto rounded-md" href="#service">Service</a>
                         </li>
                         <li class="flex">
-                            <a class="mx-auto rounded-md" href="">Business</a>
+                            <a class="mx-auto rounded-md" href="#contact">Contact</a>
                         </li>
                         <li class="flex">
                             <a class="mx-auto rounded-md" href="">Blog</a>
@@ -103,7 +103,7 @@
 
     <!-- hero description -->
     <div class="hero_description px-2 sm:px-4 md:px-6 lg:px-8 py-20">
-        <div class="max-w-7xl mx-auto">
+        <div id="explore" class="max-w-7xl mx-auto">
             <p class="px-8 md:text-2xl font-semibold text-center">Our website aims to revolutionize agriculture by
                 leveraging cutting-edge technology for plant disease detection. Through image analysis of leaves, we
                 provide swift and accurate identification of diseases, empowering farmers to take proactive measures.
@@ -157,7 +157,7 @@
     <!-- what we provide. our service -->
     <div class=" bg-gray-100 service_section px-2 sm:px-4 md:px-6 lg:px-8 py-20">
         <div class="max-w-7xl mx-auto">
-            <div class="md:flex items-center justify-between">
+            <div id="service" class="md:flex items-center justify-between">
                 <div>
                     <h1 class="py-4 text-3xl font-medium">We Provide solution to your plants</h1>
                 </div>
@@ -207,7 +207,7 @@
     <!-- contact banner -->
     <div class="contact_banner px-2 sm:px-4 md:px-6 lg:px-8 py-20">
         <div class="max-w-7xl mx-auto">
-            <div class="relative">
+            <div  id="contact"  class="relative">
                 <img class=" h-[500px] w-full object-cover" src="assets/images/orange.jpg" alt="">
                 <h1 class="absolute font-medium text-xl md:text-3xl top-0 bg-white p-4  rounded-br-xl">Cultivating Sustainability
                     <br />Agriculture</h1>

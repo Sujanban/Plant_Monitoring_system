@@ -10,3 +10,6 @@
     background-position: center;
     object-fit: cover;
 }
+html{
+    scroll-behavior: smooth;
+}

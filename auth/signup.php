@@ -70,12 +70,12 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
                 </div>
                 <div class="input-field">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" name="password" id="password" placeholder="New Password" required>
+                    <input type="password" minlength="8" name="password" id="password" placeholder="New Password" required>
                     <span class="eye-icon" onclick="return PasswordVisibility()"><i class='bx bxs-low-vision'></i></span>
                 </div>
                 <div class="input-field">
                     <i class='bx bx-lock-alt'></i>
-                    <input type="password" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
+                    <input type="password" minlength="8" name="cpassword" id="cpassword" placeholder="Confirm Password" required>
                     <span class="eye-icon" onclick="return PasswordVisibility()"><i class='bx bxs-low-vision'></i></span>
                 </div>
                 <div class="right-bottom">
