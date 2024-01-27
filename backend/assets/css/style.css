@@ -576,7 +576,7 @@ body {
 .password input[type="password"]{
     padding: 7px;
     margin-bottom: 10px;
-    outline: none;
+    outline-color: rgb(60, 145, 230);
     font-size: 16px;
 }
 .password table tr button{

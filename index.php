@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,6 +13,8 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Box Icons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Home Page</title>
 </head>
 
@@ -20,7 +25,7 @@
                 <div>
                     <a class="flex items-center font-bold uppercase" href="">
                         <img src="assets/images/logo.png" class=" py-2 h-[7vh]" alt="">
-                        <p class="hidden sm:flex">HarvestGrove</p>
+                        <p class="hidden sm:flex pl-1">AgroChat</p>
                     </a>
                 </div>
                 <div class="text-stone-600">
@@ -46,11 +51,19 @@
             </div>
             <div class="flex items-center gap-4">
                 <div class="flex items-center font-medium">
-                    <a class="px-2 py-1 sm:px-3 sm:py-1 mx-auto border-2 border-stone-900 rounded-full" href="">Contacts</a>
+                    <?php if (!isset($_SESSION['userData'])) {?>
                     <a class="px-2 py-1 sm:px-3 sm:py-1 mx-auto border-2 border-stone-900 rounded-full flex items-center text-center"
                         href="./auth/login.php">Login
                         <button><i class="px-3 rotate-45 fa-solid fa-arrow-up-long"></i></button>
                     </a>
+                    <?php } ?>
+                    <?php if (isset($_SESSION['userData'])) {?>
+                    <a class="px-2 py-1 sm:px-3 sm:py-1 mx-auto border-2 border-stone-900 rounded-full flex items-center text-center"
+                        href="./backend/index.php">
+                        Dashboard
+                        <i class='bx bxs-user' style="font-size:22px;"></i>    
+                    </a>
+                    <?php } ?>
                 </div>
 
                 <i class="sm:hidden fa-solid fa-bars hamburger"></i>
@@ -76,10 +89,10 @@
                 <div class="">
                     <h1 class="absolute left-[25%] top-5 sm:text-3xl md:text-5xl p-4 font-semibold bg-white rounded-xl">Smart
                         Agriculture,<br /> Smart World</h1>
-                    <p class="text-sm p-2 sm:p-4 absolute bg-white right-10 top-[30%] max-w-3xl rounded-xl">Explore the transformative
-                        impact of technology on agriculture at our website. Discover how innovative solutions, from
-                        precision farming and IoT applications to advanced machinery, are revolutionizing crop
-                        management, increasing yields, and promoting sustainable practices. 
+                    <p class="text-sm p-2 sm:p-4 absolute bg-white right-10 top-[30%] max-w-3xl rounded-xl">
+                    Discover the power of technology and innovation at AgroChat, where we bring transformative solutions to your fingertips. 
+                    From agriculture to smart living, our chatbot is designed to assist and engage with you on a variety of topics. 
+                    Explore the intersection of cutting-edge technology and everyday life with us.
                         </p>
                     <div class="p-2 sm:p-4 absolute bg-white left-5 bottom-5 max-w-3xl rounded-xl">
                         <div class=" rounded-full p-4">
@@ -104,9 +117,9 @@
     <!-- hero description -->
     <div class="hero_description px-2 sm:px-4 md:px-6 lg:px-8 py-20">
         <div id="explore" class="max-w-7xl mx-auto">
-            <p class="px-8 md:text-2xl font-semibold text-center">Our website aims to revolutionize agriculture by
-                leveraging cutting-edge technology for plant disease detection. Through image analysis of leaves, we
-                provide swift and accurate identification of diseases, empowering farmers to take proactive measures.
+            <p class="px-8 md:text-2xl font-semibold text-center">
+            At AgroChat, we transcend boundaries by offering smart solutions that span various industries. 
+            Whether you're interested in the latest advancements in agriculture, sustainable living, or emerging technologies, our chatbot is here to provide you with insightful information and engaging conversations.
             </p>
             <div class="py-8">
                 <div class="py-8 md:flex items-center gap-8">
@@ -116,15 +129,12 @@
 
                     <!-- </div> -->
                     <div class="flex flex-col grid-rows-3">
-                        <div class="p-4 md:p-8 md:text-xl">At [Your Website Name], we are passionate about bridging technology and
-                            agriculture for a sustainable future. Committed to innovation, we specialize in plant
-                            disease detection through image analysis. Our dedicated team strives to empower farmers with
-                            timely, accurate information for informed decision-making, fostering a resilient and
-                            thriving agricultural community.</div>
-                        <div class="text-slate-500 p-4 md:p-0 md:pl-24 flex-end">At the forefront of innovation, we specialize in
-                            plant disease detection through image analysis. Our mission is to empower farmers with
-                            advanced solutions for healthier crops and a more sustainable future. Explore the
-                            intersection of agriculture and technology with us.</div>
+                        <div class="p-4 md:p-8 md:text-xl">
+                        Our specialized chatbot is your guide to innovative agriculture. Dive into precision farming, explore IoT applications, and discover the transformative impact of technology on crop management. From plant health to sustainable practices, our chatbot delivers personalized insights to enhance your farming experience.
+                        </div>
+                        <div class="text-slate-500 p-4 md:p-0 md:pl-24 flex-end">
+                        Ready to experience the future of interactive platforms? Connect with our chatbot and elevate your journey in agriculture and weather awareness. AgroChat -where conversation meets innovation.
+                        </div>
                         <div class="p-8 flex">
                             <div class="flex font-medium">
                                 <a class="px-3 py-1 mx-auto border-2 border-stone-900 rounded-full" href="">Contacts</a>
@@ -136,13 +146,6 @@
                         </div>
 
                     </div>
-
-
-
-
-
-
-
                 </div>
             </div>
         </div>
@@ -162,7 +165,7 @@
                     <h1 class="py-4 text-3xl font-medium">We Provide solution to your plants</h1>
                 </div>
                 <div>
-                    <p>"Experience unparalleled quality service at [Your Company Name],<br /> where excellence meets
+                    <p>"Experience unparalleled quality service at AgroChat,<br /> where excellence meets
                         every expectation."</p>
                     <div class="py-8 flex">
                         <div class="flex font-medium">
@@ -178,13 +181,13 @@
             <div class="md:grid grid-cols-3 gap-4">
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
                     <img src="assets/images/girl_garden.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
-                    <h1 class="py-2 md:text-xl font-medium">Deaf Disease Detection</h1>
+                    <h1 class="py-2 md:text-xl font-medium">Agro Chatbot</h1>
                     <p class="text-sm">We provide a platform which can help detect the disease got by your plant with great accuracy.
                     </p>
                 </div>
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
                     <img src="assets/images/girl_garden.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
-                    <h1 class="py-2 md:text-xl font-medium">Deaf Disease Detection</h1>
+                    <h1 class="py-2 md:text-xl font-medium">Weather Awareness</h1>
                     <p class="text-sm">We provide a platform which can help detect the disease got by your plant with great accuracy.
                     </p>
                 </div>
@@ -234,7 +237,7 @@
             <div class="rounded-xl p-8 text-white bg-stone-800">
                 <h1 class="font-medium text-2xl">Creafting Agriculture, For<br /> Farmers, By Inovators.</h1>
                 <p class="py-2 text-sm text-gray-400">"Ready to elevate your agricultural experience? Join our platform
-                    at [Your Website Name] and unlock a world of advanced solutions for smarter, healthier farming.
+                    at AgroChat and unlock a world of advanced solutions for smarter, healthier farming.
                     Let's grow together!"</p>
                 <div class="pt-2 flex">
                     <div class="flex font-medium text-white">
@@ -273,7 +276,7 @@
                     <h2 class="pb-4 text-stone-900">
                         <a class="flex items-center font-bold uppercase" href="">
                             <img src="assets/images/logo.png" class=" p-2 h-[8vh]" alt="">
-                            <p class="hidden sm:flex">HarvestGrove</p>
+                            <p class="hidden sm:flex">AgroChat</p>
                         </a>
                     </h2>
                 </ul>
@@ -282,7 +285,7 @@
         </div>
     </div>
     <div class="text-sm max-w-7xl mx-auto p-4 px-8 flex justify-between items-center">
-        <h1>&copy; 2023 HarvestGrove</h1>
+        <h1>&copy; 2023 AgroChat</h1>
         <div class="flex items-center gap-4 text-gray-500 text-sm">
             <a href="">Privacy Policy</a>
             <a href="">Terms Of Use</a>

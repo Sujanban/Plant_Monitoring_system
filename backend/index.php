@@ -30,9 +30,9 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
   <body>
     <!-- SIDEBAR -->
     <section id="sidebar">
-      <a href="index.php" class="font-bold uppercase brand p-4">
+      <a href="../index.php" class="font-bold uppercase brand p-4">
         <img src="assets/images/logo.png" class="w-[5vh]" alt="">
-        <span class="text-stone-900 text-lg">HarvestGrove</span>
+        <span class="text-stone-900 text-lg pl-4">AgroChat</span>
       </a>
       <ul class="side-menu top">
         <li class="active">
@@ -90,7 +90,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         <i class="bx bx-menu"></i>
         <!-- <a href="#" class="nav-link">Categories</a> -->
         <form action="#">
-          <div class="form-input">
+          <div class="form-input" style="visibility: hidden;">
             <input type="search" placeholder="Search..." />
             <button type="submit" class="search-btn">
               <i class="bx bx-search"></i>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
           </div>
         </form>
         <input type="checkbox" id="switch-mode" hidden />
-        <label for="switch-mode" class="switch-mode"></label>
+        <label for="switch-mode" class="switch-mode" style="visibility: hidden;"></label>
         <a href="message.php" class="notification">
           <i class="bx bxs-bell"></i>
           <span class="num">8</span>
@@ -226,7 +226,14 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         showToast("<?php echo $_SESSION['signup_message']."<br>".$_SESSION['userData']['name']; ?>","success",5000);
       <?php 
         unset($_SESSION['signup_message']);
-      } ?>
+      }
+
+      if(isset($_SESSION['login_message'])) { ?>
+        showToast("<?php echo $_SESSION['login_message']."<br>".$_SESSION['userData']['name']; ?>","success",5000);
+      <?php 
+      unset($_SESSION['login_message']);
+      }
+      ?>
     </script>
   </body>
 </html>
