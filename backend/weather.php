@@ -23,6 +23,11 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
   <link rel="stylesheet" href="assets/css/style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- view cdn -->
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+
+
   <title>Admin Dashboard</title>
 </head>
 
@@ -103,7 +108,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         <span class="num">8</span>
       </a>
       <a href="setting.php" class="profile">
-        <i class='bx bxs-user' style="font-size:20px;"></i>
+        <img src="assets/images/profile.png" />
       </a>
     </nav>
     <!-- NAVBAR -->
@@ -119,7 +124,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
             </li>
             <li><i class="bx bx-chevron-right"></i></li>
             <li>
-              <a class="active" href="weather.php">Weather</a>
+              <a class="active" href="weather.html">Weather</a>
             </li>
           </ul>
         </div>
@@ -130,7 +135,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
       </div>
 
       <!-- weather discription -->
-      <div class="my-2">
+      <!-- <div class="my-2">
         <div class="p-4 md:p-8 sm:w-[500] md:w-[700px] mx-auto">
           <div class="flex items-center">
             <form action="" class="flex gap-2 items-center mx-auto">
@@ -211,7 +216,52 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
 
           </div>
         </div>
+      </div> -->
+      <div class="sm:w-[500] md:w-[700px] lg:w-[900] mx-auto">
+      <section id="currentData">
+        <div class="my-2">
+          <div class="p-4 md:p-8 sm:w-[500] md:w-[700px] mx-auto">
+            <div class="flex items-center">
+              <div class="flex gap-2 items-center mx-auto">
+                <input type="search" class="md:w-96 px-4 py-2 rounded-full border-none bg-white" placeholder="Search City">
+                <button type="submit" class="px-4 py-3 rounded-full bg-[#3C91E6] text-white text-xs" @click="getWeather">Search</button>
+              </div>
+            </div>
+            <div class="py-8 md:flex items-center gap-16">
+              <div class="text-center ">
+                <i class='text-yellow-500 text-5xl md:text-8xl bx bx-sun'></i>
+              </div>
+              <div class="text-center">
+                <h1 class=" text-3xl md:text-7xl py-4">{{(temp - 273.15).toFixed(2)}} °C</h1>
+                <p class="text-sm md:text-xl font-light md:py-2">{{description. toUpperCase()}}</p>
+                <p class="font-light">FEELS LIKE :{{(feels_like - 273.15).toFixed(2)}}</p>
+              </div>
+              <div class="mx-auto py-4">
+                <p class="font-light"><i class='text-2xl bx bx-wind'></i> {{wind}} KPH-N</p>
+                <p class="py-2 font-light"><i class="fa-solid fa-droplet"></i> {{humidity}} %</p>
+                <p class="font-light"><i class='text-2xl bx bx-bot'></i> {{pressure}} MB</p>
+              </div>
+            </div>
+
+      </section>
+      <section id="fututeForcast">
+        <div class="md:grid grid-cols-5">
+          <div class="leading-8 p-2 m-2 md:m-0 md:border-r text-center border-black rounded-md" v-for="data in filteredForecast" v-if="fullForecast">
+
+            <h1 class="font-light">{{getDay(data.dt_txt)}}</h1>
+            <i class='text-5xl bx bx-cloud-light-rain'></i>
+            <p class="py-2 font-light text-xs">{{(data.weather)[0].description}}</p>
+            <div class="text-xs font-light flex items-center justify-between">
+              <p>Min : <br />{{((data.main.temp_min)- 273.15).toFixed(2)}} °C</p>
+              <p>Max : <br />{{((data.main.temp_max)- 273.15).toFixed(2)}} °C</p>
+            </div>
+          </div>
+
+
+        </div>
+      </section>
       </div>
+      
 
 
 
@@ -224,3 +274,95 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
 </body>
 
 </html>
+
+<script>
+  const {
+    createApp
+  } = Vue;
+
+  createApp({
+    data() {
+      return {
+        temp: 300,
+        feels_like: 300,
+        wind: 0,
+        description: "",
+        humidity: 0,
+        pressure: 0,
+        fullForecast: "",
+
+      };
+    },
+    methods: {
+      async getWeather() {
+        this.dataLoaded = false;
+
+        const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=26.6563755&lon=87.2869557&appid=9f2e1f455e003246d00a9c41b725bbc8
+`;
+        const response = await fetch(apiUrl);
+        const UnfilteredData = await response.json();
+        this.fullForecast = UnfilteredData,
+
+          this.showData(UnfilteredData)
+
+      },
+      getDay(date) {
+        const day = new Date(date).getDay();
+        return day.toDay();
+      },
+
+      showData(allData) {
+
+        const todaysData = allData.list[0];
+
+        console.log(JSON.stringify(todaysData))
+
+        this.temp = todaysData.main.temp;
+        this.feels_like = todaysData.main.feels_like;
+        this.wind = todaysData.wind.speed;
+        this.humidity = todaysData.main.humidity;
+        this.pressure = todaysData.main.pressure;
+        this.description = (todaysData.weather)[0].description;
+
+      }
+
+
+
+
+    },
+    /*methods ends*/
+
+    computed: {
+      filteredForecast() {
+        const uniqueForecastDays = [];
+        const fiveDaysForecast = this.fullForecast.list.filter((forecast) => {
+          const forecastDate = new Date(forecast.dt_txt).getDate();
+          if (!uniqueForecastDays.includes(forecastDate)) {
+            uniqueForecastDays.push(forecastDate);
+            return true;
+
+          }
+          return false;
+
+        });
+        return fiveDaysForecast;
+      }
+    },
+
+
+  }).mount('main');
+
+
+
+  Number.prototype.toDay = function() {
+    return ({
+      1: "Sun",
+      2: "Mon",
+      3: "Tue",
+      4: "Wed",
+      5: "Thu",
+      6: "Fri",
+      7: "Sat",
+    } [this]);
+  }
+</script>
