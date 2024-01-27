@@ -182,13 +182,13 @@ session_start();
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
                     <img src="assets/images/chatbot.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
                     <h1 class="py-2 md:text-xl font-medium">Agro Chatbot</h1>
-                    <p class="text-sm">We provide a Fully functional Chatbot quuiped with Artificial Intellegence to help on crowing your crops.
+                    <p class="text-sm">We provide a Fully functional Chatbot equiped with Artificial Intellegence to help on growing your crops.
                     </p>
                 </div>
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
                     <img src="assets/images/weather.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
                     <h1 class="py-2 md:text-xl font-medium">Weather Awareness</h1>
-                    <p class="text-sm">We provide a platform which can help detect the climate conditions of your farma nd nearby areas.
+                    <p class="text-sm">We provide a platform which can help detect the climate conditions of your farma and nearby areas.
                     </p>
                 </div>
 
@@ -229,7 +229,7 @@ session_start();
     <div class="contact_banner px-2 sm:px-4 md:px-6 lg:px-8 py-20">
         <div class="max-w-7xl mx-auto md:grid grid-cols-3 items-center gap-4">
             <div class="rounded-xl p-8 text-white bg-stone-800">
-                <h1 class="font-medium text-2xl">Creafting Agriculture, For<br /> Farmers, By Inovators.</h1>
+                <h1 class="font-medium text-2xl">Crafting Agriculture, For<br /> Farmers, By Inovators.</h1>
                 <p class="py-2 text-sm text-gray-400">"Ready to elevate your agricultural experience? Join our platform
                     at AgroChat and unlock a world of advanced solutions for smarter, healthier farming.
                     Let's grow together!"</p>
