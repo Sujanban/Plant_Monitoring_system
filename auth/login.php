@@ -19,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
         $_SESSION['loggedin'] = true;
         $_SESSION['login_message']="Welcome back ";
         $_SESSION['userData'] = $row; //assgining the user data array in session
-        header("Location: ../backend");
+        header("Location: ../index.php");
     }
     else{
         $error='Invalid Credentials';
@@ -46,8 +46,9 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             <div class="left-content">
                 <img src="../assets/images/plantAndHand.png" alt="logo">
                 <div class="text">
-                    <h3>HarvestStone</h3>
-                    <p>our motto Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus error voluptates itaque porro consequuntur nulla. Est asperiores voluptatibus qui facilis?</p>
+                    <h3>AgroChat</h3>
+                    <p>
+                    Explore innovation in agriculture and weather effortlessly with our chatbot. Instant insights, personalized advice, and real-time updates for seamless experiences.                    </p>
                 </div>
             </div>
         </div>
