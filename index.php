@@ -41,12 +41,12 @@ session_start();
                         <li class="flex">
                             <a class="mx-auto rounded-md" href="#contact">Contact</a>
                         </li>
-                        <li class="flex">
+                        <!-- <li class="flex">
                             <a class="mx-auto rounded-md" href="">Blog</a>
                         </li>
                         <li class="flex">
                             <a class="mx-auto rounded-md" href="">FAQs</a>
-                        </li>
+                        </li> -->
                 </div>
             </div>
             <div class="flex items-center gap-4">
@@ -169,32 +169,26 @@ session_start();
                         every expectation."</p>
                     <div class="py-8 flex">
                         <div class="flex font-medium">
-                            <a class="px-3 py-1 mx-auto border-2 border-stone-900 rounded-full" href="">Contacts</a>
-                            <a class=" py-1 mx-auto border-2 border-stone-900 rounded-full flex items-center text-center"
+                            <a class="px-3 py-1 mx-auto border-2 border-stone-900 rounded-full" href="mailto:bansujan@gmail.com">Contacts</a>
+                            <!-- <a class=" py-1 mx-auto border-2 border-stone-900 rounded-full flex items-center text-center"
                                 href="">
                                 <button><i class="px-3 rotate-45 fa-solid fa-arrow-up-long"></i></button>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="md:grid grid-cols-3 gap-4">
+            <div class="md:grid grid-cols-2 gap-4">
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
-                    <img src="assets/images/girl_garden.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
+                    <img src="assets/images/chatbot.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
                     <h1 class="py-2 md:text-xl font-medium">Agro Chatbot</h1>
-                    <p class="text-sm">We provide a platform which can help detect the disease got by your plant with great accuracy.
+                    <p class="text-sm">We provide a Fully functional Chatbot quuiped with Artificial Intellegence to help on crowing your crops.
                     </p>
                 </div>
                 <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
-                    <img src="assets/images/girl_garden.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
+                    <img src="assets/images/weather.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
                     <h1 class="py-2 md:text-xl font-medium">Weather Awareness</h1>
-                    <p class="text-sm">We provide a platform which can help detect the disease got by your plant with great accuracy.
-                    </p>
-                </div>
-                <div class="m-2 p-2 md:p-6 rounded-md bg-gray-200">
-                    <img src="assets/images/girl_garden.jpg" class="rounded h-[200px] md:h-[300px] object-cover w-full" alt="">
-                    <h1 class="py-2 md:text-xl font-medium">Deaf Disease Detection</h1>
-                    <p class="text-sm">We provide a platform which can help detect the disease got by your plant with great accuracy.
+                    <p class="text-sm">We provide a platform which can help detect the climate conditions of your farma nd nearby areas.
                     </p>
                 </div>
 
@@ -216,7 +210,7 @@ session_start();
                     <br />Agriculture</h1>
                 <div class="absolute right-0 bottom-0 p-8 flex">
                     <div class="flex font-medium text-white">
-                        <a class="px-3 py-1 mx-auto border-2 border-white rounded-full" href="">Contacts</a>
+                        <a class="px-3 py-1 mx-auto border-2 border-white rounded-full" href="mailto:bansujan@gmail.com">Contacts</a>
                         <a class=" py-1 mx-auto border-2 border-white rounded-full flex items-center text-center"
                             href="">
                             <button><i class="px-3 rotate-45 fa-solid fa-arrow-up-long"></i></button>
