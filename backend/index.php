@@ -21,6 +21,8 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     />
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Toast CSS -->
+    <link rel="stylesheet" href="assets/css/toast.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Admin Dashboard</title>
@@ -102,7 +104,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
           <span class="num">8</span>
         </a>
         <a href="setting.php" class="profile">
-          <img src="assets/images/profile.png" />
+          <i class='bx bxs-user' style="font-size:20px;"></i>
         </a>
       </nav>
       <!-- NAVBAR -->
@@ -118,7 +120,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
               </li>
               <li><i class="bx bx-chevron-right"></i></li>
               <li>
-                <a class="active" href="index.html">Home</a>
+                <a class="active" href="index.php">Home</a>
               </li>
             </ul>
           </div>
@@ -218,5 +220,13 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     <!-- CONTENT -->
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/toast.js"></script>
+    <script>
+      <?php if(isset($_SESSION['signup_message'])) { ?>
+        showToast("<?php echo $_SESSION['signup_message']."<br>".$_SESSION['userData']['name']; ?>","success",5000);
+      <?php 
+        unset($_SESSION['signup_message']);
+      } ?>
+    </script>
   </body>
 </html>

@@ -99,7 +99,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         <span class="num">8</span>
       </a>
       <a href="setting.php" class="profile">
-        <img src="assets/images/profile.png" />
+        <i class='bx bxs-user' style="font-size:20px;"></i>
       </a>
     </nav>
     <!-- NAVBAR -->

@@ -20,7 +20,19 @@ if ($_SERVER["REQUEST_METHOD"]=="POST") {
             $sql = "INSERT INTO users(`name`,email,`password`) VALUES ('$name','$email','$pass')";
             $insertUser = mysqli_query($conn,$sql);
             if ($insertUser) {
-                $accountCreated="Account Created Sucessfully!! ";
+                //sql command to select the particular username and password
+                $sql = "SELECT id,`name`,email FROM users WHERE email='$email' AND password='$pass'";
+                $result = mysqli_query($conn,$sql);
+
+                //fetching data
+                $row=mysqli_fetch_assoc($result);
+                if($row){
+                    session_start();
+                    $_SESSION['loggedin'] = true;
+                    $_SESSION['signup_message'] = "Welcome to AgroChat ";
+                    $_SESSION['userData'] = $row; //assgining the user data array in session
+                    header("Location: ../backend");
+                }
                 
             }
         }

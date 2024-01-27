@@ -44,9 +44,9 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
           </a>
         </li>
         <li>
-          <a href="disease.php">
-            <i class='bx bxs-virus'></i>
-            <span class="text">Disease Detection</span>
+          <a href="bot.php">
+          <i class='bx bx-bot'></i>
+            <span class="text">Farm Bot</span>
           </a>
         </li>
         <li>
@@ -66,7 +66,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         <li class="active">
           <a href="setting.php">
             <i class="bx bxs-cog"></i>
-            <span class="text">Settings</span>
+            <span class="text setting_active">Settings</span>
           </a>
         </li>
         <li>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
           <span class="num">8</span>
         </a>
         <a href="setting.php" class="profile">
-          <img src="assets/images/profile.png" />
+          <i class='bx bxs-user' style="font-size:20px;"></i>
         </a>
       </nav>
       <!-- NAVBAR -->
@@ -109,14 +109,14 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
       <main>
         <div class="head-title">
           <div class="left">
-            <h1>Dashboard</h1>
+            <h1><?php echo $_SESSION['userData']['name'];?></h1>
             <ul class="breadcrumb">
               <li>
                 <a href="#">Dashboard</a>
               </li>
               <li><i class="bx bx-chevron-right"></i></li>
               <li>
-                <a class="active" href="index.html">Home</a>
+                <a class="active" href="setting.php">Setting</a>
               </li>
             </ul>
           </div>
@@ -124,6 +124,30 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
             <i class="bx bxs-cloud-download"></i>
             <span class="text">Download PDF</span>
           </a> -->
+        </div>
+
+        <div class="password">
+            <form method="POST" action="">
+                <table>
+                    <tr>
+                        <td>Current password</td>
+                        <td><input type="password" name="currentPassword" required></td>
+                    </tr>
+                    <tr>
+                        <td>New password</td>
+                        <td><input type="password" name="newPassword" required></td>
+                    </tr>
+                    <tr>
+                        <td>Retype password</td>
+                        <td><input type="password" name="retypeNewPassword" required></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <button type="submit" name="passwordBtn">Change</button>   
+                        </td>
+                    </tr>
+                </table>
+            </form>
         </div>
 
         
