@@ -1,9 +1,45 @@
 <?php
 session_start();
+$msg="";
+$err="";    
 if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     header("Location: ../auth/login.php");
 } else {
+  if(isset($_POST['passwordBtn'])){
+    //importing database
+    require_once("./partials/_dbconnect.php");
+
+    //form data
+    $currentPassword=md5(trim($_POST['currentPassword']));
+    $newPassword=md5(trim($_POST['newPassword']));
+    $retypeNewPassword=md5(trim($_POST['retypeNewPassword']));
+
     $user_id=$_SESSION['userData']['id'];
+
+    //retriving password from the database
+    $queryRun=mysqli_query($conn,"SELECT `password` FROM users WHERE id='$user_id'");
+    $databasePasswordArr=mysqli_fetch_assoc($queryRun);
+    
+    //checking current password
+    if($currentPassword==$databasePasswordArr['password']){
+        if($newPassword==$retypeNewPassword){
+            $sql2="UPDATE users SET `password`='$newPassword' WHERE id=".$_SESSION['userData']['id'];
+            $result2=mysqli_query($conn,$sql2);
+            if($result2){
+                $msg="Password Updated Successfully!!";
+            }
+            else{
+                $err="Error: Operation Failed!";
+            }
+
+        }else{
+            $err=" Your New Passwords do not match";
+        }
+    }
+    else{
+        $err="Your old password do not match";
+    }
+  }
 }
 ?>
 <!DOCTYPE html>
@@ -19,6 +55,8 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     />
     <!-- My CSS -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Toast CSS -->
+    <link rel="stylesheet" href="assets/css/toast.css" />
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Admin Dashboard</title>
@@ -131,15 +169,15 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
                 <table>
                     <tr>
                         <td>Current password</td>
-                        <td><input type="password" name="currentPassword" required></td>
+                        <td><input type="password" minlength="8" name="currentPassword" required></td>
                     </tr>
                     <tr>
                         <td>New password</td>
-                        <td><input type="password" name="newPassword" required></td>
+                        <td><input type="password" minlength="8"  name="newPassword" required></td>
                     </tr>
                     <tr>
                         <td>Retype password</td>
-                        <td><input type="password" name="retypeNewPassword" required></td>
+                        <td><input type="password" minlength="8" name="retypeNewPassword" required></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -157,5 +195,14 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
     <!-- CONTENT -->
 
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/toast.js"></script>
+    <script>
+      <?php if ($msg) { ?>
+            showToast("<?php echo $msg;?>","success",5000);
+        <?php } ?>
+        <?php if ($err) { ?>
+            showToast("<?php echo $err;?>","danger",5000);
+        <?php } ?>
+    </script>
   </body>
 </html>

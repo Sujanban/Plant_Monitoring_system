@@ -17,6 +17,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     if($row){
         session_start();
         $_SESSION['loggedin'] = true;
+        $_SESSION['login_message']="Welcome back ";
         $_SESSION['userData'] = $row; //assgining the user data array in session
         header("Location: ../backend");
     }

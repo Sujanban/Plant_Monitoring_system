@@ -226,7 +226,14 @@ if (!isset($_SESSION['userData']) && $_SESSION['loggedin'] != true) {
         showToast("<?php echo $_SESSION['signup_message']."<br>".$_SESSION['userData']['name']; ?>","success",5000);
       <?php 
         unset($_SESSION['signup_message']);
-      } ?>
+      }
+
+      if(isset($_SESSION['login_message'])) { ?>
+        showToast("<?php echo $_SESSION['login_message']."<br>".$_SESSION['userData']['name']; ?>","success",5000);
+      <?php 
+      unset($_SESSION['login_message']);
+      }
+      ?>
     </script>
   </body>
 </html>
